@@ -18,7 +18,12 @@ export const validateForm = (errors) => {
   export const validateProductType = (productType) => {
     return productType.length > 0;
   };
-  
+//ProductSize validation
+  export const validateProductSize = (processedSize) => {
+    return processedSize.length > 0;
+  };
+
+
   //  ProductSubCategory validation
   export const validateProductSubCategory = (productSubCategory) => {
     return productSubCategory.length > 0;
@@ -134,7 +139,8 @@ export const validateForm = (errors) => {
     state,
     city,
     pincode,
-    landmark
+    landmark,
+    area
   ) => {
     // return region.length > 0 && state.length > 0 && city.length > 0 && pincode.length > 0;
     //  region should be less than state and state should be less than city and city should be less than pincode and all should be greater than 0 and not empty
@@ -144,14 +150,8 @@ export const validateForm = (errors) => {
       state.length > 0 &&
       city.length > 0 &&
       pincode.length > 0 &&
-      region < state &&
-      state < city &&
-      city < pincode &&
-      region > 0 &&
-      state > 0 &&
-      city > 0 &&
-      pincode > 0 &&
-      landmark > 0
+      landmark.length > 0 &&
+      area.length > 0
     );
   };
   
@@ -184,11 +184,62 @@ export const validateForm = (errors) => {
   ) => {
     return weightAfterPackingPerUnit.length > 0;
   };
-  
+
+  //  PackagingAndDeliveryInstructionsIfAny validation
+  export const validatePackagingAndDeliveryInstructionsIfAny = (
+    PackagingAndDeliveryInstructionsIfAny
+  ) => {
+    return PackagingAndDeliveryInstructionsIfAny.length > 0;
+  };
+
   //  Flavor validation
   export const validateFlavor = (flavor) => {
     return flavor.length > 0;
   };
+   //  Tags validation
+   export const validateTags = (tags) => {
+    return tags.length > 0;
+  };
+   //  Inclusions validation
+   export const validateInclusions = (inclusions) => {
+    return inclusions.length > 0;
+  };
+   //  Exclusions validation
+   export const validateExclusions = (exclusions) => {
+    return exclusions.length > 0;
+  };
+   //  TermsAndConditions validation
+   export const validateTermsAndConditions = (termsAndConditions) => {
+    return termsAndConditions.length > 0;
+  };
+     //  RedemptionSteps validation
+     export const validateRedemptionSteps = (redemptionSteps) => {
+      return redemptionSteps.length > 0;
+    };
+       //  HowCanItBeRedeemed validation
+   export const validateHowCanItBeRedeemed = (howCanItBeRedeemed) => {
+    return howCanItBeRedeemed.length > 0;
+  };
+     //  AddressIfSingleTypeBelow validation
+     export const validateAddressIfSingleTypeBelow = (addressIfSingleTypeBelow) => {
+      return addressIfSingleTypeBelow.length > 0;
+    };
+     //  OnlineRedemptionUrl validation
+     export const validateOnlineRedemptionUrl = (onlineRedemptionUrl) => {
+      return onlineRedemptionUrl.length > 0;
+    };
+     //  PackagingInfoPerUnit validation
+     export const validatePackagingInfoPerUnit = (packagingInfoPerUnit) => {
+      return packagingInfoPerUnit.length > 0;
+    };
+     //  InstructionsToUseProduct validation
+     export const validateInstructionsToUseProduct = (instructionsToUseProduct) => {
+      return instructionsToUseProduct.length > 0;
+    };
+     //  LegalInformation validation
+     export const validateLegalInformation = (legalInformation) => {
+      return legalInformation.length > 0;
+    };
   
   // MRP validation
   export const validateMRP = (mrp) => {
