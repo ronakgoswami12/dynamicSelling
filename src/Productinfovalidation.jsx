@@ -1,45 +1,27 @@
 import React, { useState, useEffect } from "react";
 
 import {
-  validateGuarantee,
-  validateWarranty,
   validateProductColor,
+  validateBrandName,
+  validateOfferingThisBrandingAt,
+  validateOfferingAT,
+  validateTotalQuantity,
+  validateShelfLife,
   validateProductQuantity,
   validateDiscountedPriceWithPricePerUnit,
   validateMinOrderQuantityWithMaxOrderQuantity,
   validateRegionWithStateWithCityWithPincode,
-  validateProductSubCategory,
-  validateProductSubtittle,
-  validateProductDescription,
   validateHSNCode,
   validateProductSize,
   validateGST,
   validateProductIdType,
   validateSampleavailability,
-  validateLength,
-  validateForm,
-  validateWidth,
-  validateHeight,
   validateSampleMinOrderQuantity,
   validateGender,
   validateFlavor,
   validateMRP,
   validatePriceofsample,
   validateUnit,
-  validateWeightBeforePackingPerUnit,
-  validateWeightAfterPackingPerUnit,
-  validatePackagingAndDeliveryInstructionsIfAny,
-  validateTags,
-  validateInclusions,
-  validateExclusions,
-  validateTermsAndConditions,
-  validateRedemptionSteps,
-  validateHowCanItBeRedeemed,
-  validateAddressIfSingleTypeBelow,
-  validateOnlineRedemptionUrl,
-  validatePackagingInfoPerUnit,
-  validateInstructionsToUseProduct,
-  validateLegalInformation,
   validateRoomType,
   validateTotalValueUploaded,
   validateValidityOfVoucher,
@@ -48,14 +30,15 @@ import {
   validateTimeline,
   validateRepetition,
   validateDisplayDimensionSize,
-  validatePrice
+  validatePrice,
+  validateSellerCompanyName,
+  validateQuantity,
 } from "./Validation";
 import { Input } from "@mui/material";
 
 const FormComponent = () => {
-  const [Form,setForm]=useState("");
-  const [Guarantee,setGuarantee]=useState("");
-  const [Warranty,setWarranty]=useState("");
+  const [Form, setForm] = useState("");
+
   const [Gender, setGender] = useState("");
   const [Flavor, setFlavor] = useState("");
   const [ProductColor, setProductColor] = useState("");
@@ -65,87 +48,44 @@ const FormComponent = () => {
   const [MinOrderQuantity, setMinOrderQuantity] = useState("");
   const [MaxOrderQuantity, setMaxOrderQuantity] = useState("");
   const [HSN, setHSN] = useState("");
+
   const [GST, setGST] = useState("");
+  const [SellerCompanyName, setSellerCompanyName] = useState("");
   const [ProductIdType, setProductIdType] = useState("");
   const [ProductSize, setProductSize] = useState("");
-  const [ProductSubCategory,setProductSubCategory]=useState("");
-  const [ProductDescription,setProductDescription]=useState("");
-  const [ProductSubtittle,setProductSubtittle]=useState("");
+
   const [SampleAvailable, setSampleAvailable] = useState("");
   const [SampleMinOrderQuantity, setSampleMinOrderQuantity] = useState("");
   const [PriceOfSample, setPriceOfSample] = useState("");
   const [Unit, setUnit] = useState("");
-  const [Length, setLength] = useState("");
-  const [Width, setWidth] = useState("");
-  const [Height, setHeight] = useState("");
-  const [WeightBeforePackingPerUnit,setWeightBeforePackingPerUnit]=useState("");
-  const [WeightAfterPackingPerUnit,setWeightAfterPackingPerUnit]=useState("");
-  const [PackagingAndDeliveryInstructionsIfAny,setPackagingAndDeliveryInstructionsIfAny]=useState("");
-  const [Tags,setTags]=useState("");
-  const [Inclusions,setInclusions]=useState("");
-  const [Exclusions,setExclusions]=useState("");
-  const [TermsAndConditions,setTermsAndConditions]=useState("");
-  const [RedemptionSteps,setRedemptionSteps]=useState("");
-  const [HowCanItBeRedeemed,setHowCanItBeRedeemed]=useState("");
-  const [AddressIfSingleTypeBelow,setAddressIfSingleTypeBelow]=useState(""); 
-  const [OnlineRedemptionUrl,setOnlineRedemptionUrl]=useState("");
-  const [PackagingInfoPerUnit,setPackagingInfoPerUnit]=useState("");
-  const [InstructionsToUseProduct,setInstructionsToUseProduct]=useState("");
-  const [LegalInformation,setLegalInformation]=useState("");
-  const [HeightUnits, setHeightUnits] = useState("");
-  const [WidthUnits, setWidthUnits] = useState("");
-  const [LengthUnits, setLengthUnits] = useState("");
+
   const [RoomType, setRoomType] = useState("");
-  const [TotalValueUploaded, setTotalValueUpload]= useState("");
-  const [ValidityOfVoucher, setValidityOfVoucher]= useState("");
-  const [TotalQuantity,setTotalQuantity]= useState("");
-  const [Quantity,setQuantity]=useState("");
-  const [TotalPrice,setTotalPrice]=useState("");
-  const [DateOfEvent,setDateOfEvent]=useState("");
-  const [Timeline,setTimeline]=useState("");
-  const [Repetition,setRepetition]=useState("");
-  const [DisplayDimensionSize,setDisplayDimensionSize]=useState("");
-  const [Price,setPrice]=useState("");
-  const [Region,setRegion] = useState("");
-  const [State,setState]=useState("");
-  const [City,setCity] = useState("");
-  const [Landmark,setLandmark]=useState("");
-  const [Area,setArea]= useState("");
-  const [ProductQuantity,setProductQuantity]=useState("");
+  const [TotalValueUploaded, setTotalValueUpload] = useState("");
+  const [ValidityOfVoucher, setValidityOfVoucher] = useState("");
+  const [TotalQuantity, setTotalQuantity] = useState("");
+  const [Quantity, setQuantity] = useState("");
+  const [TotalPrice, setTotalPrice] = useState("");
+  const [DateOfEvent, setDateOfEvent] = useState("");
+  const [Timeline, setTimeline] = useState("");
+  const [Repetition, setRepetition] = useState("");
+  const [DisplayDimensionSize, setDisplayDimensionSize] = useState("");
+  const [Price, setPrice] = useState("");
+  const [Region, setRegion] = useState("");
+  const [State, setState] = useState("");
+  const [City, setCity] = useState("");
+  const [Landmark, setLandmark] = useState("");
+  const [Sampleavailability, setSampleavailability] = useState("");
+  const [Area, setArea] = useState("");
+  const [BrandName, setBrandName] = useState("");
+  const [OfferingThisBrandingAt, setOfferingThisBrandingAt] = useState("");
+  const [OfferingAT, setOfferingAT] = useState("");
+  const [ShelfLife, setShelfLife] = useState("");
+  const [ProductQuantity, setProductQuantity] = useState("");
   const [userData, setUserData] = useState("");
   const [StoreAllData, setStoreAllData] = useState([]);
   // const [ProductVariationData, setProductVariationData] = useState([]);
 
-  function convertToCentimeters(value, unit) {
-    let centimeters = 0;
-
-    switch (unit) {
-      case "mm":
-        centimeters = value / 10;
-        break;
-      case "m":
-        centimeters = value * 100;
-        break;
-      default:
-        centimeters = value;
-        break;
-    }
-
-    return centimeters;
-  }
-
   const ProductVariationArray = [
-  
-    {
-      name: "Guarantee",
-      type: "text",
-      state: Guarantee,
-    },
-    {
-      name: "Warranty",
-      type: "text",
-      state: Warranty,
-    },
     {
       name: "Gender",
       type: "dropdown",
@@ -203,6 +143,11 @@ const FormComponent = () => {
       type: "number",
       state: GST,
     },
+    {
+      name: "SellerCompanyName",
+      type: "number",
+      state: SellerCompanyName,
+    },
 
     {
       name: "ProductIdType",
@@ -210,24 +155,14 @@ const FormComponent = () => {
       state: ProductIdType,
     },
     {
-      name:"ProductSize",
-      type:"text",
+      name: "PriceOfSample",
+      type: "text",
+      state: PriceOfSample,
+    },
+    {
+      name: "ProductSize",
+      type: "text",
       state: ProductSize,
-    },
-    {
-      name:"ProductSubCategory",
-      type:"text",
-      state: ProductSubCategory,
-    },
-    {
-      name:"ProductSubtittle",
-      type:"text",
-      state: ProductSubtittle,
-    },
-    {
-      name:"ProductDescription",
-      type:"text",
-      state: ProductDescription,
     },
 
     {
@@ -243,106 +178,11 @@ const FormComponent = () => {
     },
 
     {
-      name: "PriceOfSample",
-      type: "number",
-      state: PriceOfSample,
-    },
-
-    {
       name: "Unit",
       type: "text",
       state: Unit,
     },
-    {
-      name: "Length",
-      type: "number",
-      units: ["cm", "m", "mm"],
-      state: Length,
-    },
-    {
-      name: "Width",
-      type: "number",
-      units: ["cm", "m", "mm"],
-      state: Width,
-    },
-    {
-      name: "Height",
-      type: "number",
-      units: ["cm", "m", "mm"],
-      state: Height,
-    },
-    {
-      name: "WeightBeforePackingPerUnit",
-      type: "number",
-      units: [ "g", "kg"],
-      state: WeightBeforePackingPerUnit,
-    },
-    {
-      name: "WeightAfterPackingPerUnit",
-      type: "number",
-      units: [ "g", "kg"],
-      state: WeightAfterPackingPerUnit,
-    },
-    {
-      name: "PackagingAndDeliveryInstructionsIfAny",
-      type: "text",
-      state: PackagingAndDeliveryInstructionsIfAny,
-    },
-    {
-      name: "Tags",
-      type: "text",
-      state: Tags,
-    },
-    {
-      name: "Inclusions",
-      type: "text",
-      state: Inclusions,
-    },
-    {
-      name: "Exclusions",
-      type: "text",
-      state: Exclusions,
-    },
-    {
-      name: "TermsAndConditions",
-      type: "text",
-      state: TermsAndConditions,
-    },
-    {
-      name: "RedemptionSteps",
-      type: "text",
-      state: RedemptionSteps,
-    },
-    {
-      name: "HowCanItBeRedeemed",
-      type: "text",
-      state: HowCanItBeRedeemed,
-    },
-    {
-      name: "AddressIfSingleTypeBelow",
-      type: "text",
-      state: AddressIfSingleTypeBelow,
-    },
-    {
-      name: "OnlineRedemptionUrl",
-      type: "text",
-      state: OnlineRedemptionUrl,
-    },
-    {
-      name: "PackagingInfoPerUnit",
-      type: "text",
-      state: PackagingInfoPerUnit,
-    },
-    {
-      name: "InstructionsToUseProduct",
-      type: "text",
-      state: InstructionsToUseProduct,
-    },
-    {
-      name: "LegalInformation",
-      type: "text",
-      state: LegalInformation,
-    },
+
     {
       name: "RoomType",
       type: "text",
@@ -401,6 +241,7 @@ const FormComponent = () => {
     {
       name: "Region",
       type: "text",
+      units: ["West", "East", "North", "South"],
       state: Region,
     },
     {
@@ -419,18 +260,35 @@ const FormComponent = () => {
       state: Landmark,
     },
     {
-      name:"Area",
+      name: "Area",
       type: "text",
       state: Area,
     },
     {
-      name:"ProductQuantity",
+      name: "ProductQuantity",
       type: "number",
       state: ProductQuantity,
-    }
-
-        
-
+    },
+    {
+      name: "BrandName",
+      type: "number",
+      state: BrandName,
+    },
+    {
+      name: "OfferingThisBrandingAt",
+      type: "number",
+      state: OfferingThisBrandingAt,
+    },
+    {
+      name: "OfferingAT",
+      type: "number",
+      state: OfferingAT,
+    },
+    {
+      name: "ShelfLife",
+      type: "number",
+      state: ShelfLife,
+    },
   ];
 
   const [errors, setErrors] = useState(
@@ -488,23 +346,84 @@ const FormComponent = () => {
     if (name === "MRP") {
       setMRP(value);
     }
+
     if (name === "DiscountedPrice") {
       setDiscountedPrice(value);
     }
+    if (name === "BrandName") {
+      setBrandName(value);
+    }
+    if (name === "OfferingThisBrandingAt") {
+      setOfferingThisBrandingAt(value);
+    }
+    if (name === "OfferingAt") {
+      setOfferingAT(value);
+    }
+    if (name === "TotalQuantity") {
+      setTotalQuantity(value);
+    }
+    if (name === "ShelfLife") {
+      setShelfLife(value);
+    }
+    if (name === "ProductQuantity") {
+      setProductQuantity(value);
+    }
+    if (name === "Region") {
+      setRegion(value);
+    }
+    if (name === "Area") {
+      setArea(value);
+    }
+    if (name === "State") {
+      setState(value);
+    }
+    if (name === "City") {
+      setCity(value);
+    }
+    if (name === "Landmark") {
+      setLandmark(value);
+    }
+    if (name === "ProductSize") {
+      setProductSize(value);
+    }
+    if (name === "ProductIdType") {
+      setProductIdType(value);
+    }
+    if (name === "SampleAvailability") {
+      setSampleavailability(value);
+    }
 
-    if (name === "Length") {
-      const centimeters = convertToCentimeters(value, LengthUnits);
-      setLength(centimeters);
-    } else if (name === "Width") {
-      const centimeters = convertToCentimeters(value, WidthUnits);
-      setWidth(centimeters);
-    } else if (name === "Height") {
-      const centimeters = convertToCentimeters(value, HeightUnits);
-      setHeight(centimeters);
+    if (name === "RoomType") {
+      setRoomType(value);
+    }
+    if (name === "TotalValueUploaded") {
+      setTotalValueUpload(value);
+    }
+    if (name === "TotalPrice") {
+      setTotalPrice(value);
+    }
+    if (name === "DateOfEvent") {
+      setDateOfEvent(value);
+    }
+    if (name === "Timeline") {
+      setTimeline(value);
+    }
+    if (name === "Repetition") {
+      setRepetition(value);
+    }
+    if (name === "DisplayDimensionsize") {
+      setDisplayDimensionSize(value);
+    }
+    if (name === "Price") {
+      setPrice(value);
+    }
+    if (name === "SellerCompanyName") {
+      setSellerCompanyName(value);
+    }
+    if (name === "Quantity") {
+      setQuantity(value);
     }
   };
-
-  let ProductVariationData = [];
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -512,53 +431,55 @@ const FormComponent = () => {
     // let userData;
     setErrors({});
     if (
-      Guarantee===""&&
-      Warranty==="" &&
-      Gender === "" &&
-      Flavor === "" &&
       ProductColor === "" &&
-      MRP === "" &&
-      PricePerUnit === "" &&
+      BrandName === "" &&
+      OfferingThisBrandingAt === "" &&
+      OfferingAT === "" &&
+      TotalQuantity === "" &&
+      ShelfLife === "" &&
+      ProductQuantity === "" &&
       DiscountedPrice === "" &&
+      PricePerUnit === "" &&
       MinOrderQuantity === "" &&
       MaxOrderQuantity === "" &&
+      Region === "" &&
+      City === "" &&
+      Area === "" &&
+      State === "" &&
       HSN === "" &&
+      ProductSize === "" &&
       GST === "" &&
       ProductIdType === "" &&
-      SampleAvailable === "" &&
+      Sampleavailability === "" &&
       SampleMinOrderQuantity === "" &&
+      Gender === "" &&
+      Flavor === "" &&
+      MRP === "" &&
       PriceOfSample === "" &&
       Unit === "" &&
-      Length === "" &&
-      Width === "" &&
-      Height === ""
+      RoomType === "" &&
+      TotalValueUploaded === "" &&
+      ValidityOfVoucher === "" &&
+      TotalPrice === "" &&
+      DateOfEvent === "" &&
+      Timeline === "" &&
+      Repetition === "" &&
+      DisplayDimensionSize === "" &&
+      Price === "" &&
+      SellerCompanyName === "" &&
+      Quantity === ""
     ) {
       alert("Please fill the form");
     } else {
-      if (HSN){
-        if(!validateHSNCode(HSN)){
-          setErrors((prevErrors)=>({
+      if (HSN) {
+        if (!validateHSNCode(HSN)) {
+          setErrors((prevErrors) => ({
             ...prevErrors,
-            HSN:"Length should be greater than zero"
-          }))
+            HSN: "Length should be greater than zero",
+          }));
         }
       }
-      if (Guarantee){
-        if(!validateGuarantee(Guarantee)){
-          setErrors((prevErrors)=>({
-            ...prevErrors,
-            Guarantee:"Length should be greater than zero"
-          }))
-        }
-      }
-      if (Warranty){
-        if(!validateWarranty(Warranty)){
-          setErrors((prevErrors)=>({
-            ...prevErrors,
-            Warranty:"Length should be greater than zero"
-          }))
-        }
-      }
+
       if (Gender) {
         if (!validateGender(Gender)) {
           setErrors((prevErrors) => ({
@@ -607,31 +528,7 @@ const FormComponent = () => {
           }));
         }
       }
-      if (ProductSubCategory) {
-        if (!validateProductSubCategory(ProductSubCategory)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            ProductSubCategory: "ProductSubCategory should be greater than zero",
-          }));
-        }
-      }
-      if (ProductSubtittle) {
-        if (!validateProductSubtittle(ProductSubtittle)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            ProductSubtittle: "ProductSubtittle should be greater than zero",
-          }));
-        }
-      }
-      if (ProductDescription) {
-        if (!validateProductDescription(ProductDescription)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            ProductDescription: "ProductDescription should be greater than zero",
-          }));
-        }
-      }
-      
+
       if (ProductQuantity) {
         if (!validateProductQuantity(ProductQuantity)) {
           setErrors((prevErrors) => ({
@@ -657,6 +554,7 @@ const FormComponent = () => {
           }));
         }
       }
+
       if (PriceOfSample) {
         if (!validatePriceofsample(PriceOfSample)) {
           setErrors((prevErrors) => ({
@@ -670,142 +568,6 @@ const FormComponent = () => {
           setErrors((prevErrors) => ({
             ...prevErrors,
             Unit: "Unit should be greater than zero",
-          }));
-        }
-      }
-      if (Length) {
-        if (!validateLength(Length)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            Length: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (Width) {
-        if (!validateWidth(Width)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            Width: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (Height) {
-        if (!validateHeight(Height)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            Height: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (WeightBeforePackingPerUnit) {
-        if (!validateWeightBeforePackingPerUnit(WeightBeforePackingPerUnit)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            WeightBeforePackingPerUnit: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (WeightAfterPackingPerUnit) {
-        if (!validateWeightAfterPackingPerUnit(WeightAfterPackingPerUnit)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            WeightAfterPackingPerUnit: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (PackagingAndDeliveryInstructionsIfAny) {
-        if (!validatePackagingAndDeliveryInstructionsIfAny(PackagingAndDeliveryInstructionsIfAny)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            PackagingAndDeliveryInstructionsIfAny: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (Tags) {
-        if (!validateTags(Tags)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            Tags: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (Inclusions) {
-        if (!validateInclusions(Inclusions)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            Inclusions: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (Exclusions) {
-        if (!validateExclusions(Exclusions)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            Exclusions: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (TermsAndConditions) {
-        if (!validateTermsAndConditions(TermsAndConditions)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            TermsAndConditions: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (RedemptionSteps) {
-        if (!validateRedemptionSteps(RedemptionSteps)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            RedemptionSteps: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (HowCanItBeRedeemed) {
-        if (!validateHowCanItBeRedeemed(HowCanItBeRedeemed)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            HowCanItBeRedeemed: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (AddressIfSingleTypeBelow) {
-        if (!validateAddressIfSingleTypeBelow(AddressIfSingleTypeBelow)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            AddressIfSingleTypeBelow: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (OnlineRedemptionUrl) {
-        if (!validateOnlineRedemptionUrl(OnlineRedemptionUrl)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            OnlineRedemptionUrl: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (PackagingInfoPerUnit) {
-        if (!validatePackagingInfoPerUnit(PackagingInfoPerUnit)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            PackagingInfoPerUnit: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (InstructionsToUseProduct) {
-        if (!validateInstructionsToUseProduct(InstructionsToUseProduct)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            InstructionsToUseProduct: "Length should be greater than zero",
-          }));
-        }
-      }
-      if (LegalInformation) {
-        if (!validateLegalInformation(LegalInformation)) {
-          setErrors((prevErrors) => ({
-            ...prevErrors,
-            LegalInformation: "Length should be greater than zero",
           }));
         }
       }
@@ -850,6 +612,14 @@ const FormComponent = () => {
           }));
         }
       }
+      if (TotalQuantity) {
+        if (!validateTotalQuantity(TotalQuantity)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            TotalQuantity: "Length should be greater than zero",
+          }));
+        }
+      }
       if (Timeline) {
         if (!validateTimeline(Timeline)) {
           setErrors((prevErrors) => ({
@@ -882,8 +652,16 @@ const FormComponent = () => {
           }));
         }
       }
+      if (Quantity) {
+        if (!validateQuantity(Quantity)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            Quantity: "Length should be greater than zero",
+          }));
+        }
+      }
       if (HSN) {
-        if (!validateGST(HSN)) {
+        if (!validateHSNCode(HSN)) {
           setErrors((prevErrors) => ({
             ...prevErrors,
             HSN: "Length should be greater than zero",
@@ -895,6 +673,46 @@ const FormComponent = () => {
           setErrors((prevErrors) => ({
             ...prevErrors,
             GST: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (SellerCompanyName) {
+        if (!validateSellerCompanyName(SellerCompanyName)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            SellerCompanyName: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (BrandName) {
+        if (!validateBrandName(BrandName)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            BrandName: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (OfferingThisBrandingAt) {
+        if (!validateOfferingThisBrandingAt(OfferingThisBrandingAt)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            OfferingThisBrandingAt: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (OfferingAT) {
+        if (!validateOfferingAT(OfferingAT)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            OfferingAT: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ShelfLife) {
+        if (!validateShelfLife(ShelfLife)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ShelfLife: "Length should be greater than zero",
           }));
         }
       }
@@ -947,52 +765,73 @@ const FormComponent = () => {
       }
       if (
         Region &&
-        !validateRegionWithStateWithCityWithPincode(Region, City,State,Landmark)
+        !validateRegionWithStateWithCityWithPincode(
+          Region,
+          City,
+          State,
+          Landmark
+        )
       ) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          Region:
-            "Length of region should be greater than 0",
+          Region: "Length of region should be greater than 0",
         }));
       }
       if (
         State &&
-        !validateRegionWithStateWithCityWithPincode(Region, City,State,Landmark)
+        !validateRegionWithStateWithCityWithPincode(
+          Region,
+          City,
+          State,
+          Landmark
+        )
       ) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          State:
-            "Length of state should be greater than 0",
+          State: "Length of state should be greater than 0",
         }));
       }
       if (
         City &&
-        !validateRegionWithStateWithCityWithPincode(Region, City,State,Landmark)
+        !validateRegionWithStateWithCityWithPincode(
+          Region,
+          City,
+          State,
+          Landmark
+        )
       ) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          City:
-            "Length of City should be greater than 0",
+          City: "Length of City should be greater than 0",
         }));
       }
       if (
         Landmark &&
-        !validateRegionWithStateWithCityWithPincode(Region, City,State,Landmark)
+        !validateRegionWithStateWithCityWithPincode(
+          Region,
+          City,
+          State,
+          Landmark
+        )
       ) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          Landmark:
-            "Length of Landmark should be greater than 0",
+          Landmark: "Length of Landmark should be greater than 0",
         }));
       }
       if (
         Area &&
-        !validateRegionWithStateWithCityWithPincode(Region, City,State,Landmark,Area)
+        !validateRegionWithStateWithCityWithPincode(
+          Region,
+          City,
+          State,
+          Landmark,
+          Area
+        )
       ) {
         setErrors((prevErrors) => ({
           ...prevErrors,
-          Area:
-            "Length of Area should be greater than 0",
+          Area: "Length of Area should be greater than 0",
         }));
       }
     }
@@ -1015,9 +854,6 @@ const FormComponent = () => {
         SampleMinOrderQuantity,
         PriceOfSample,
         Unit,
-        Length,
-        Width,
-        Height,
       },
     ]);
   };
@@ -1059,20 +895,7 @@ const FormComponent = () => {
                 onChange={handleInputChange}
               />
               {item?.units?.length > 0 && (
-                <select
-                  onChange={(e) => {
-                    if (item?.name === "Height") {
-                      setHeightUnits(e.target.value);
-                      setHeight(convertToCentimeters(Height, e.target.value));
-                    } else if (item?.name === "Length") {
-                      setLengthUnits(e.target.value);
-                      setLength(convertToCentimeters(Length, e.target.value));
-                    } else if (item?.name === "Width") {
-                      setWidthUnits(e.target.value);
-                      setWidth(convertToCentimeters(Width, e.target.value));
-                    }
-                  }}
-                >
+                <select>
                   {item?.units?.map((unit) => (
                     <option key={unit} value={unit}>
                       {unit}
