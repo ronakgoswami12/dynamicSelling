@@ -19,7 +19,25 @@ import {
   validateAddressIfSingleTypeBelow,
   validateOnlineRedemptionUrl,
   validatePackagingInfoPerUnit,
-  validateLegalInformation
+  validateLegalInformation,
+  validateContentUploadLink,
+  validateCalender,
+  validateModelName,
+  validateDestination,
+  validatePositionOrEditionOrPremiumOfferingCostOfTheAd,
+  validateManufacturingDate,
+  validateRegistrationDetails,
+  validateExpiryDate,
+  validateProductPickUpLocation,
+  validatePickUpLocationPincode,
+  validateProductUploadStatus,
+  validateCostPrice,
+  validateAdCostGST,
+  validateAdCostHSN,
+  validateAdCostApplicableOn,
+  validateReasonOfCost,
+  validateFeatureName,
+  validateFeatureDesc,
 } from "./Validation";
 import { Input } from "@mui/material";
 
@@ -45,7 +63,8 @@ const FormComponent = () => {
   const [HeightUnits, setHeightUnits] = useState("");
   const [WidthUnits, setWidthUnits] = useState("");
   const [LengthUnits, setLengthUnits] = useState("");
-  
+  const [ContentUploadLink, setContentUploadLink] = useState("");
+  const [Calender, setCalender] = useState("");
   const [Inclusions, setInclusions] = useState("");
   const [Exclusions, setExclusions] = useState("");
   const [TermsAndConditions, setTermsAndConditions] = useState("");
@@ -55,7 +74,25 @@ const FormComponent = () => {
   const [OnlineRedemptionUrl, setOnlineRedemptionUrl] = useState("");
   const [PackagingInfoPerUnit, setPackagingInfoPerUnit] = useState("");
   const [LegalInformation, setLegalInformation] = useState("");
-
+  const [ModelName, setModelName] = useState("");
+  const [Destination, setDestination] = useState("");
+  const [
+    PositionOrEditionOrPremiumOfferingCostOfTheAd,
+    setPositionOrEditionOrPremiumOfferingCostOfTheAd,
+  ] = useState("");
+  const [RegistrationDetails, setRegistrationDetails] = useState("");
+  const [ManufacturingDate, setManufacturingDate] = useState("");
+  const [ExpiryDate, setExpiryDate] = useState("");
+  const [ProductPickUpLocation, setProductPickUpLocation] = useState("");
+  const [PickUpLocationPincode, setPickUpLocationPincode] = useState("");
+  const [ProductUploadStatus, setProductUploadStatus] = useState("");
+  const [CostPrice, setCostPrice] = useState("");
+  const [AdCostGST, setAdCostGST] = useState("");
+  const [AdCostHSN, setAdCostHSN] = useState("");
+  const [AdCostApplicableOn, setAdCostApplicableOn] = useState("");
+  const [ReasonOfCost, setReasonOfCost] = useState("");
+  const [FeatureName, setFeatureName] = useState("");
+  const [FeatureDesc, setFeatureDesc] = useState("");
   const [StoreAllData, setStoreAllData] = useState([]);
   const [WeightAfterPackingPerUnit, setWeightAfterPackingPerUnit] =
     useState("");
@@ -188,6 +225,96 @@ const FormComponent = () => {
       type: "text",
       state: LegalInformation,
     },
+    {
+      name: "ContentUploadLink",
+      type: "text",
+      state: ContentUploadLink,
+    },
+    {
+      name: "Calender",
+      type: "text",
+      state: Calender,
+    },
+    {
+      name: "ModelName",
+      type: "text",
+      state: ModelName,
+    },
+    {
+      name: "Destination",
+      type: "text",
+      state: Destination,
+    },
+    {
+      name: "PositionOrEditionOrPremiumOfferingCostOfTheAd",
+      type: "text",
+      state: PositionOrEditionOrPremiumOfferingCostOfTheAd,
+    },
+    {
+      name: "RegistrationDetails",
+      type: "text",
+      state: RegistrationDetails,
+    },
+    {
+      name: "ManufacturingDate",
+      type: "text",
+      state: ManufacturingDate,
+    },
+    {
+      name: "ExpiryDate",
+      type: "text",
+      state: ExpiryDate,
+    },
+    {
+      name: "ProductPickUpLocation",
+      type: "text",
+      state: ProductPickUpLocation,
+    },
+    {
+      name: "PickUpLocationPincode",
+      type: "text",
+      state: PickUpLocationPincode,
+    },
+    {
+      name: "ProductUploadStatus",
+      type: "text",
+      state: ProductUploadStatus,
+    },
+    {
+      name: "CostPrice",
+      type: "text",
+      state: CostPrice,
+    },
+    {
+      name: "AdCostGST",
+      type: "text",
+      state: AdCostGST,
+    },
+    {
+      name: "AdCostHSN",
+      type: "text",
+      state: AdCostHSN,
+    },
+    {
+      name: "AdCostApplicableOn",
+      type: "text",
+      state: AdCostApplicableOn,
+    },
+    {
+      name: "ReasonOfCost",
+      type: "text",
+      state: ReasonOfCost,
+    },
+    {
+      name: "FeatureName",
+      type: "text",
+      state: FeatureName,
+    },
+    {
+      name: "FeatureDesc",
+      type: "text",
+      state: FeatureDesc,
+    },
   ];
   const [errors, setErrors] = useState(
     TechVariationArray?.reduce((acc, item) => {
@@ -229,7 +356,7 @@ const FormComponent = () => {
       const centimeters = convertToCentimeters(value, HeightUnits);
       setHeight(centimeters);
     }
-      
+
     if (name === "Inclusions") {
       setInclusions(value);
     }
@@ -257,6 +384,60 @@ const FormComponent = () => {
     if (name === "LegalInformation") {
       setLegalInformation(value);
     }
+    if (name === "ContentUploadLink") {
+      setContentUploadLink(value);
+    }
+    if (name === "Calender") {
+      setCalender(value);
+    }
+    if (name === "ModelName") {
+      setModelName(value);
+    }
+    if (name === "Destination") {
+      setDestination(value);
+    }
+    if (name === "PositionOrEditionOrPremiumOfferingCostOfTheAd") {
+      setPositionOrEditionOrPremiumOfferingCostOfTheAd(value);
+    }
+    if (name === "RegistrationDetails") {
+      setRegistrationDetails(value);
+    }
+    if (name === "ManufacturingDate") {
+      setManufacturingDate(value);
+    }
+    if (name === "ExpiryDate") {
+      setExpiryDate(value);
+    }
+    if (name === "ProductPickUpLocation") {
+      setProductPickUpLocation(value);
+    }
+    if (name === "PickUpLocationPincode") {
+      setPickUpLocationPincode(value);
+    }
+    if (name === "ProductUploadStatus") {
+      setProductUploadStatus(value);
+    }
+    if (name === "CostPrice") {
+      setCostPrice(value);
+    }
+    if (name === "AdCostGST") {
+      setAdCostGST(value);
+    }
+    if (name === "AdCostHSN") {
+      setAdCostHSN(value);
+    }
+    if (name === "AdCostApplicableOn") {
+      setAdCostApplicableOn(value);
+    }
+    if (name === "ReasonOfCost") {
+      setReasonOfCost(value);
+    }
+    if (name === "FeatureName") {
+      setFeatureName(value);
+    }
+    if (name === "FeatureDesc") {
+      setFeatureDesc(value);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -275,16 +456,34 @@ const FormComponent = () => {
       Warranty === "" &&
       Tags === "" &&
       WeightAfterPackingPerUnit === "" &&
-      Inclusions=== ""&&
-      Exclusions=== ""&&
-      TermsAndConditions=== ""&&
-      RedemptionSteps=== ""&&
-      HowCanItBeRedeemed=== ""&&
-      AddressIfSingleTypeBelow=== ""&&
-      OnlineRedemptionUrl=== ""&&
-      PackagingInfoPerUnit=== ""&&
-      LegalInformation=== ""&&
-      PackagingAndDeliveryInstructionsIfAny === ""
+      Inclusions === "" &&
+      Exclusions === "" &&
+      TermsAndConditions === "" &&
+      RedemptionSteps === "" &&
+      HowCanItBeRedeemed === "" &&
+      AddressIfSingleTypeBelow === "" &&
+      OnlineRedemptionUrl === "" &&
+      PackagingInfoPerUnit === "" &&
+      LegalInformation === "" &&
+      PackagingAndDeliveryInstructionsIfAny === "" &&
+      ContentUploadLink === "" &&
+      Calender === "" &&
+      ModelName === "" &&
+      Destination === "" &&
+      PositionOrEditionOrPremiumOfferingCostOfTheAd === "" &&
+      ManufacturingDate === "" &&
+      RegistrationDetails === "" &&
+      ExpiryDate === "" &&
+      ProductPickUpLocation === "" &&
+      PickUpLocationPincode === "" &&
+      ProductUploadStatus === "" &&
+      CostPrice === "" &&
+      AdCostGST === "" &&
+      AdCostHSN === "" &&
+      AdCostApplicableOn === "" &&
+      ReasonOfCost === "" &&
+      FeatureName === "" &&
+      FeatureDesc
     ) {
       alert("Please fill the form");
     } else {
@@ -365,7 +564,7 @@ const FormComponent = () => {
           }));
         }
       }
-      
+
       if (Inclusions) {
         if (!validateInclusions(Inclusions)) {
           setErrors((prevErrors) => ({
@@ -440,12 +639,160 @@ const FormComponent = () => {
         }
       }
 
-
       if (InstructionsToUseProduct) {
         if (!validateInstructionsToUseProduct(InstructionsToUseProduct)) {
           setErrors((prevErrors) => ({
             ...prevErrors,
             InstructionsToUseProduct: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ContentUploadLink) {
+        if (!validateContentUploadLink(ContentUploadLink)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ContentUploadLink: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (Calender) {
+        if (!validateCalender(Calender)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            Calender: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ModelName) {
+        if (!validateModelName(ModelName)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ModelName: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (Destination) {
+        if (!validateDestination(Destination)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            Destination: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (PositionOrEditionOrPremiumOfferingCostOfTheAd) {
+        if (
+          !validatePositionOrEditionOrPremiumOfferingCostOfTheAd(
+            PositionOrEditionOrPremiumOfferingCostOfTheAd
+          )
+        ) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            PositionOrEditionOrPremiumOfferingCostOfTheAd:
+              "Length should be greater than zero",
+          }));
+        }
+      }
+      if (RegistrationDetails) {
+        if (!validateRegistrationDetails(RegistrationDetails)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            RegistrationDetails: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ManufacturingDate) {
+        if (!validateManufacturingDate(ManufacturingDate)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ManufacturingDate: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ExpiryDate) {
+        if (!validateExpiryDate(ExpiryDate)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ExpiryDate: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ProductPickUpLocation) {
+        if (!validateProductPickUpLocation(ProductPickUpLocation)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ProductPickUpLocation: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (PickUpLocationPincode) {
+        if (!validatePickUpLocationPincode(PickUpLocationPincode)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            PickUpLocationPincode: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ProductUploadStatus) {
+        if (!validateProductUploadStatus(ProductUploadStatus)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ProductUploadStatus: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (CostPrice) {
+        if (!validateCostPrice(CostPrice)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            CostPrice: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (AdCostGST) {
+        if (!validateAdCostGST(AdCostGST)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            AdCostGST: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (AdCostHSN) {
+        if (!validateAdCostHSN(AdCostHSN)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            AdCostHSN: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (AdCostApplicableOn) {
+        if (!validateAdCostApplicableOn(AdCostApplicableOn)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            AdCostApplicableOn: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (ReasonOfCost) {
+        if (!validateReasonOfCost(ReasonOfCost)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            ReasonOfCost: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (FeatureName) {
+        if (!validateFeatureName(FeatureName)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            FeatureName: "Length should be greater than zero",
+          }));
+        }
+      }
+      if (FeatureDesc) {
+        if (!validateFeatureDesc(FeatureDesc)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            FeatureDesc: "Length should be greater than zero",
           }));
         }
       }
@@ -474,12 +821,29 @@ const FormComponent = () => {
         PackagingAndDeliveryInstructionsIfAny,
         Tags,
         WeightAfterPackingPerUnit,
-
         InstructionsToUseProduct,
         WeightBeforePackingPerUnit,
         Length,
         Width,
         Height,
+        ContentUploadLink,
+        Calender,
+        ModelName,
+        Destination,
+        PositionOrEditionOrPremiumOfferingCostOfTheAd,
+        ManufacturingDate,
+        RegistrationDetails,
+        ExpiryDate,
+        ProductPickUpLocation,
+        PickUpLocationPincode,
+        ProductUploadStatus,
+        CostPrice,
+        AdCostGST,
+        AdCostHSN,
+        AdCostApplicableOn,
+        ReasonOfCost,
+        FeatureName,
+        FeatureDesc,
       },
     ]);
   };

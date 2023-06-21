@@ -33,6 +33,7 @@ import {
   validatePrice,
   validateSellerCompanyName,
   validateQuantity,
+  validateLocation
 } from "./Validation";
 import { Input } from "@mui/material";
 
@@ -81,6 +82,7 @@ const FormComponent = () => {
   const [OfferingAT, setOfferingAT] = useState("");
   const [ShelfLife, setShelfLife] = useState("");
   const [ProductQuantity, setProductQuantity] = useState("");
+  const [Location,setLocation] = useState("");
   const [userData, setUserData] = useState("");
   const [StoreAllData, setStoreAllData] = useState([]);
   // const [ProductVariationData, setProductVariationData] = useState([]);
@@ -207,6 +209,11 @@ const FormComponent = () => {
       name: "Quantity",
       type: "number",
       state: Quantity,
+    },
+    {
+      name: "Location",
+      type: "number",
+      state: Location,
     },
     {
       name: "TotalPrice",
@@ -423,6 +430,10 @@ const FormComponent = () => {
     if (name === "Quantity") {
       setQuantity(value);
     }
+    if (name === "Location") {
+      setLocation(value);
+    }
+    
   };
 
   const handleSubmit = (e) => {
@@ -467,7 +478,8 @@ const FormComponent = () => {
       DisplayDimensionSize === "" &&
       Price === "" &&
       SellerCompanyName === "" &&
-      Quantity === ""
+      Quantity === "" &&
+      Location === "" 
     ) {
       alert("Please fill the form");
     } else {
@@ -716,6 +728,14 @@ const FormComponent = () => {
           }));
         }
       }
+      if (Location) {
+        if (!validateLocation(Location)) {
+          setErrors((prevErrors) => ({
+            ...prevErrors,
+            Location: "Length should be greater than zero",
+          }));
+        }
+      }
 
       if (
         MinOrderQuantity &&
@@ -854,6 +874,7 @@ const FormComponent = () => {
         SampleMinOrderQuantity,
         PriceOfSample,
         Unit,
+        Location,
       },
     ]);
   };

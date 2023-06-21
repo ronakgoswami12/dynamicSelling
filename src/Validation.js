@@ -338,4 +338,121 @@ export const validateOtherInformationBuyerMustKnowOrRemarks = (
   return otherInformationBuyerMustKnowOrRemarks.length > 0;
 };
 
+//  ContentUploadLink validation
+
+export const validateContentUploadLink = (
+  contentUploadLink
+) => {
+  return contentUploadLink.length > 0;
+};
+//  Calender validation
+
+export const validateCalender = (
+  calender
+) => {
+  return calender.length > 0;
+};
+
+//  ModelName validation
+export const validateModelName = (
+  modelName
+) => {
+  return modelName.length > 0;
+};
+//  Destination validation
+export const validateDestination = (
+  destination
+) => {
+  return destination.length > 0;
+};
+//  PositionOrEditionOrPremiumOfferingCostOfTheAd validation
+export const validatePositionOrEditionOrPremiumOfferingCostOfTheAd = (
+  positionOrEditionOrPremiumOfferingCostOfTheAd
+) => {
+  return positionOrEditionOrPremiumOfferingCostOfTheAd.length > 0;
+};
+//  ManufacturingDate validation
+export const validateManufacturingDate = (
+  manufacturingDate
+) => {
+  return manufacturingDate.length > 0;
+};
+//  RegistrationDetails validation
+export const validateRegistrationDetails = (
+  registrationDetails
+) => {
+  return registrationDetails.length > 0;
+};
+//  ExpiryDate validation
+export const validateExpiryDate = (
+  expiryDate
+) => {
+  return expiryDate.length > 0;
+};
+//  ProductPickUpLocation validation
+export const validateProductPickUpLocation = (
+  productPickUpLocation
+) => {
+  return productPickUpLocation.length > 0;
+};
+//  PickUpLocationPincode validation
+export const validatePickUpLocationPincode = (
+  pickUpLocationPincode
+) => {
+  return pickUpLocationPincode.length > 0;
+};
+//  ProductUploadStatus validation
+export const validateProductUploadStatus = (
+  productUploadStatus
+) => {
+  return productUploadStatus.length > 0;
+};
+//  CostPrice validation
+export const validateCostPrice = (
+  costPrice
+) => {
+  return costPrice.length > 0;
+};
+//  AdCostGST validation
+export const validateAdCostGST = (
+  adCostGST
+) => {
+  return adCostGST.length > 0;
+};
+//  AdCostHSN validation
+export const validateAdCostHSN = (
+  adCostHSN
+) => {
+  return adCostHSN.length > 0;
+};
+//  AdCostApplicableOn validation
+export const validateAdCostApplicableOn = (
+  adCostApplicableOn
+) => {
+  return adCostApplicableOn.length > 0;
+};
+//  ReasonOfCost validation
+export const validateReasonOfCost = (
+  reasonOfCost
+) => {
+  return reasonOfCost.length > 0;
+};
+//  FeatureName validation
+export const validateFeatureName = (
+  featureName
+) => {
+  return featureName.length > 0;
+};
+//  FeatureDesc validation
+export const validateFeatureDesc = (
+  featureDesc
+) => {
+  return featureDesc.length > 0;
+};
+//  Location validation
+export const validateLocation = (
+  location
+) => {
+  return location.length > 0;
+};
 
