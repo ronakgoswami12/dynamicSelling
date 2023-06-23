@@ -212,7 +212,7 @@ const FormComponent = () => {
     },
     {
       name: "Location",
-      type: "number",
+      type: "text",
       state: Location,
     },
     {
@@ -237,7 +237,7 @@ const FormComponent = () => {
     },
     {
       name: "DisplayDimensionSize",
-      type: "text",
+      type: "number",
       state: DisplayDimensionSize,
     },
     {
@@ -278,7 +278,7 @@ const FormComponent = () => {
     },
     {
       name: "BrandName",
-      type: "number",
+      type: "text",
       state: BrandName,
     },
     {
@@ -294,6 +294,7 @@ const FormComponent = () => {
     {
       name: "ShelfLife",
       type: "number",
+      units: ["Years", "Month", "Days"],
       state: ShelfLife,
     },
   ];

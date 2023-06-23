@@ -6,6 +6,7 @@ import {
   validateProductSubCategory,
 } from "./Validation";
 import { Input } from "@mui/material";
+import axios from "axios";
 
 const FormComponent = () => {
   const [userData, setUserData] = useState("");
@@ -14,6 +15,36 @@ const FormComponent = () => {
   const [ProductDescription, setProductDescription] = useState("");
   const [ProductSubtittle, setProductSubtittle] = useState("");
   const [StoreAllData, setStoreAllData] = useState([]);
+
+  async function Fetchdata() {
+    try {
+      const response = await axios.get(`http://localhost:3000/users`, {
+        withCredentials: true,
+      });
+      console.log("GET response:", response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+  
+  async function Adddata() {
+    try {
+      const response = await axios.post(`http://localhost:3000/users`, {
+        // Provide the data you want to send in the request body
+      }, {
+        withCredentials: true,
+      });
+      console.log("POST response:", response.data);
+    } catch (error) {
+      console.error("Error adding data:", error);
+    }
+  }
+  
+  useEffect(() => {
+    Fetchdata();
+    Adddata();
+  }, []);
+  
 
   const GeneralVariationArray = [
     {
@@ -123,6 +154,7 @@ const FormComponent = () => {
     ]);
   };
   console.log("data", StoreAllData);
+
   return (
     <div>
       {GeneralVariationArray?.map((item) => {

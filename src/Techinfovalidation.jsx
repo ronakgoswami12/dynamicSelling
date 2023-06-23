@@ -49,6 +49,9 @@ const FormComponent = () => {
   const [Guarantee, setGuarantee] = useState("");
   const [Warranty, setWarranty] = useState("");
   const [userData, setUserData] = useState("");
+  // const [costData, setCostData] = useState("");
+  // const [featureData, setFeatureData] = useState("");
+
   const [Tags, setTags] = useState("");
   const [InstructionsToUseProduct, setInstructionsToUseProduct] = useState("");
   const [WeightBeforePackingPerUnit, setWeightBeforePackingPerUnit] =
@@ -94,6 +97,8 @@ const FormComponent = () => {
   const [FeatureName, setFeatureName] = useState("");
   const [FeatureDesc, setFeatureDesc] = useState("");
   const [StoreAllData, setStoreAllData] = useState([]);
+  const [StoreCostData, setStoreCostData] = useState([]);
+  const [StoreFeatureData, setStoreFeatureData] = useState([]);
   const [WeightAfterPackingPerUnit, setWeightAfterPackingPerUnit] =
     useState("");
 
@@ -811,7 +816,23 @@ const FormComponent = () => {
         }
       }
     }
-
+    setStoreFeatureData([
+      ...StoreFeatureData,
+      {
+        FeatureName,
+        FeatureDesc,
+      }
+    ])
+    setStoreCostData([
+      ...StoreCostData,
+      {
+        CostPrice,
+        AdCostGST,
+        AdCostHSN,
+        AdCostApplicableOn,
+        ReasonOfCost,
+      },
+    ]);
     setStoreAllData([
       ...StoreAllData,
       {
@@ -837,17 +858,13 @@ const FormComponent = () => {
         ProductPickUpLocation,
         PickUpLocationPincode,
         ProductUploadStatus,
-        CostPrice,
-        AdCostGST,
-        AdCostHSN,
-        AdCostApplicableOn,
-        ReasonOfCost,
-        FeatureName,
-        FeatureDesc,
+       
       },
     ]);
   };
   console.log("data", StoreAllData);
+  console.log("costdata", StoreCostData);
+  console.log("featuredata", StoreFeatureData);
   return (
     <div>
       {TechVariationArray?.map((item) => {
